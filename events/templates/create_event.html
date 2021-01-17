@@ -1,0 +1,56 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ustvari dogodek</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/create_event.css' %}">
+</head>
+<body>
+
+    <div class="box">
+        <form enctype="multipart/form-data" method="POST"> {% csrf_token %}
+            <h3 class="text-center">Ustvari dogodek</h3>
+
+            <div class="grid">
+                <div class="input-container">
+                    {{form.name}}		
+                </div>
+    
+                <div class="input-container">		
+                    {{form.addrs}}
+                </div>
+    
+                <div class="input-container">		
+                    {{form.desc}}
+                </div>
+    
+                <div class="input-container">		
+                    {{form.start_date}}
+                </div>
+    
+                <div class="input-container">		
+                    {{form.start_time}}
+                </div>
+    
+                <div class="input-container">
+                    <p>Izberite sliko</p>
+                    {{form.image}}
+                </div>
+
+                <div class="input-container">
+                    <p>{{request.user.profile}}</p>
+                </div>
+
+                
+            </div>
+
+            <button type="submit" class="btn">Ustvari</button>
+        </form>	
+    </div>
+
+    <script src="{% static 'js/create_event.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dogodki</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+</head>
+<body>
+
+    <!-- Hero section -->
+    <div class="hero_section">
+        <div class="hero_headline">
+            <h1 id="hero">Ustvari svoje doživetje</h1>
+            <h3 id="cursive">Glasbeni dogodki</h3>
+        </div>
+        
+        <div class="create_event">
+            <a href="create-event">Ustvari Dogodek</a>
+        </div>
+    </div>
+    
+    
+    <!-- Profile Section -->
+    <div class="profile_section">
+        {% if request.user.is_anonymous %}
+            <div class="profile">
+                <a href="/login" class="display"><i class="fas fa-user"></i>Prijava</a>
+            </div>
+        {% else %}
+            <div class="profile">
+                <a href="/logout" class="display"><i class="fas fa-user-alt-slash"></i>Odjava</a>
+                <h3 class="display">{{request.user.profile}}</h3>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <!-- Event section -->
+    <div class="events_section">
+        {% for event in events %}
+            <div class="event" data-value="{{event.name}}">
+                <img src="{{event.image.url}}" alt="">
+                <h3>{{event.name}}</h3>
+
+                <div class="info">
+                    <h4><i class="far fa-calendar-alt"></i>{{event.start_date}}</h4>
+                    <h4><i class="far fa-clock"></i>{{event.start_time}}</h4>
+                    <h4><i class="fas fa-map-marker-alt"></i>{{event.addrs}}</h4>
+                </div>
+                
+                <div class="circle"><i class="fas fa-chevron-circle-right"></i></div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button id="scroll_back">
+        <span>Nazaj na vrh</span>
+    </button>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script src="{% static 'js/home.js'%}"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registracija</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body>
+    <div class="box">
+        <form action='' method="POST"> {% csrf_token %}
+            <h3 class="text-center">Registriraj se</h3>
+
+            <div class="input-container">
+                {{form.username}}	
+            </div>
+
+            <div class="input-container">		
+                {{form.email}}
+            </div>
+
+            <div class="input-container">		
+                {{form.password1}}
+            </div>
+
+            <div class="input-container">		
+                {{form.password2}}
+            </div>
+
+            <button type="submit" class="btn">Registracija</button>
+            <a href="login">Sem že registriran</a>
+        </form>	
+        <br>
+        {{form.errors}}
+    </div>
+    <script src="{% static 'js/register.js' %}"></script>
+</body>
+</html>

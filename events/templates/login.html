@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prijava</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+    <style>
+        #message{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <form action='' method="POST"> {% csrf_token %}
+            <h3 class="text-center">Prijava</h3>
+
+            <div class="input-container">
+                <input type="username" name='username', placeholder='username'>	
+            </div>
+
+            <div class="input-container">		
+                <input type="password" name='password', placeholder='password'>	
+            </div>
+
+            {% for message in messages %}
+                <p id='message'>{{message}}</p>
+            {% endfor %}
+
+            <button type="submit" class="btn">Prijava</button>
+            <a href="register">Nisem registriran</a>
+        </form>	
+    </div>
+</body>
+</html>
