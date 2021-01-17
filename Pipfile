@@ -10,7 +10,7 @@ django = "*"
 pillow = "*"
 gunicorn = "*"
 whitenoise = "*"
-django-environ = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.8"
