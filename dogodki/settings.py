@@ -24,8 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('Events_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
+DEBUG =  False
 ALLOWED_HOSTS = ['glasbeni-dogodki.herokuapp.com', '127.0.0.1']
 
 
